@@ -1,0 +1,4 @@
+'hyphenator admin':
+  title: 'Administer hyphenator settings'
+  description: 'Who can edit hyphenator settings?'
+  restrict access: true

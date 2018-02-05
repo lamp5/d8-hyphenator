@@ -1,0 +1,90 @@
+<?php
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function hyphenator_page_attachments(array &$attachments)
+{
+  $attachments['#cache'] = ['max-age' => 0];
+  $settings = [];
+
+  $config = \Drupal::config('hyphenator.settings');
+
+  if($config->get('donthyphenateclassname') != ''){
+    $settings['donthyphenateclassname'] = $config->get('donthyphenateclassname');
+  }
+
+  if($config->get('urlclassname') != ''){
+    $settings['urlclassname'] = $config->get('urlclassname');
+  }
+
+  if($config->get('minwordlength') > 0 ){
+    $settings['minwordlength'] = (int)$config->get('minwordlength');
+  }
+
+  if($config->get('hyphenchar') != ''){
+    $settings['hyphenchar'] = $config->get('hyphenchar');
+  }
+
+  if($config->get('urlhyphenchar') != ''){
+    $settings['urlhyphenchar'] = $config->get('urlhyphenchar');
+  }
+
+  $settings['remoteloading'] = (bool)$config->get('remoteloading');
+
+  $settings['enablecache'] = (bool)$config->get('enablecache');
+
+  $settings['enablereducedpatternset'] = (bool)$config->get('enablereducedpatternset');
+
+  if($config->get('intermediatestate') != ''){
+    $settings['intermediatestate'] = $config->get('intermediatestate');
+  }
+
+  $settings['safecopy'] = (bool)$config->get('safecopy');
+
+  $settings['doframes'] = (bool)$config->get('doframes');
+
+  if($config->get('storagetype') != ''){
+    $settings['storagetype'] = $config->get('storagetype');
+  }
+
+  if($config->get('orphancontrol') > 0 ){
+    $settings['orphancontrol'] = (int)$config->get('orphancontrol');
+  }
+
+  $settings['dohyphenation'] = (bool)$config->get('dohyphenation');
+
+  $settings['persistentconfig'] = (bool)$config->get('persistentconfig');
+
+  if($config->get('defaultlanguage') != 'auto' && $config->get('defaultlanguage') != ''){
+    $settings['defaultlanguage'] = $config->get('defaultlanguage');
+  }
+
+  $settings['useCSS3hyphenation'] = (bool)$config->get('useCSS3hyphenation');
+
+  if($config->get('unhide') != ''){
+    $settings['unhide'] = $config->get('unhide');
+  }
+
+  if($config->get('leftmin') > 0 ){
+    $settings['leftmin'] = (int)$config->get('leftmin');
+  }
+
+  if($config->get('rightmin') > 0 ){
+    $settings['rightmin'] = (int)$config->get('rightmin');
+  }
+
+  if($config->get('compound') != ''){
+    $settings['compound'] = $config->get('compound');
+  }
+
+  if($config->get('classname') != ''){
+    $settings['classname'] = $config->get('classname');
+
+    $attachments['#attached']['library'][] = 'hyphenator/hyphenator';
+    $attachments['#attached']['drupalSettings']['hyphenator'] = $settings;
+  }
+
+}
+

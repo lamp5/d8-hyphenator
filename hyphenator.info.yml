@@ -1,0 +1,8 @@
+name: The Hyphenator
+type: module
+core: 8.x
+version: 8.x-1.0
+description: Javascript library that automatically hyphenates text on websites.
+
+configure: hyphenator.settings
+

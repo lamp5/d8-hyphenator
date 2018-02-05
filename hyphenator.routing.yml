@@ -1,0 +1,9 @@
+hyphenator.settings:
+  path: '/admin/config/content/hyphenator'
+  defaults:
+    _form: '\Drupal\hyphenator\Form\hyphenatorSettingsForm'
+    _title: 'Hephenator settings'
+  requirements:
+    _permission: 'hyphenator admin'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,8 @@
+hyphenator:
+    version: 1.x
+    js:
+      lib/Hyphenator/Hyphenator.js: {}
+      js/hyphenator.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupalSettings
