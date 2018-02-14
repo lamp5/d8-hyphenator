@@ -45,7 +45,7 @@ function hyphenator_page_attachments(array &$attachments)
 
   $settings['doframes'] = (bool)$config->get('doframes');
 
-  if($config->get('storagetype') != ''){
+  if($config->get('storagetype') != 'default'){
     $settings['storagetype'] = $config->get('storagetype');
   }
 
@@ -53,7 +53,9 @@ function hyphenator_page_attachments(array &$attachments)
     $settings['orphancontrol'] = (int)$config->get('orphancontrol');
   }
 
-  $settings['dohyphenation'] = (bool)$config->get('dohyphenation');
+  if((bool)$config->get('dohyphenation')){
+    $settings['dohyphenation'] = !(bool)$config->get('dohyphenation');
+  }
 
   $settings['persistentconfig'] = (bool)$config->get('persistentconfig');
 
